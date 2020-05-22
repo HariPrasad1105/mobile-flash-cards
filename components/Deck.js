@@ -33,7 +33,7 @@ class Deck extends Component {
         <View style={styles.buttons}>
           <View>
             <TouchableOpacity style={styles.startQuiz}
-              onPress={this.handleQuizStart}
+              onPress={() => this.handleQuizStart()}
             >
               <Text style={styles.startQuizText}>
                 Start Quiz

@@ -1,5 +1,5 @@
 import React, { Fragment, Component } from 'react';
-import { StyleSheet, View, Text, StatusBar, Platform } from 'react-native';
+import { View, StatusBar } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -15,7 +15,6 @@ import reducers from './reducers';
 import Deck from './components/Deck';
 import AddCard from './components/AddCard';
 import { setLocalNotifications } from './utils/notifications';
-import { clearAsyncStorage } from './utils/api';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -114,7 +113,6 @@ export default class App extends Component {
   componentDidMount() {
     setLocalNotifications()
   }
-
 
   render() {
     return (

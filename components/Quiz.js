@@ -62,6 +62,16 @@ class Quiz extends Component {
     const { answered, total, answeredCorrectly, cards } = this.state;
     const progess = Math.ceil((answeredCorrectly / total) * 100);
 
+    if (total === 0) {
+      return (
+        <View style={styles.container}>
+          <Text style={styles.answerText}>
+            Please add Question to the deck and start the quiz
+          </Text>
+        </View>
+      );
+    }
+
     return (
       <View style={styles.container}>
         {answered === total
@@ -71,7 +81,7 @@ class Quiz extends Component {
                 {`You have answered ${answeredCorrectly} out of ${total} cards correctly.`}
               </Text>
               <Text style={{ textAlign: 'center', fontSize: 20 }}>You Scored</Text>
-              <Text style={{ fontSize: 50, textAlign: 'center', color: 'purple' }}>{progess} %</Text>
+              <Text style={{ fontSize: 80, textAlign: 'center', color: 'purple' }}>{progess} %</Text>
               <View style={{ marginTop: 85, alignItems: 'center' }}>
                 <TouchableOpacity style={[styles.button, { backgroundColor: 'purple' }]}
                   onPress={this.handleStartOverClick}

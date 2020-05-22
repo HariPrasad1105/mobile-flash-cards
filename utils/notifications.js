@@ -2,7 +2,7 @@ import { AsyncStorage } from 'react-native';
 import { Notifications } from 'expo';
 import * as Permissions from 'expo-permissions';
 
-const NOTIFICATION_KEY = 'mobile-flash-cards:storage';
+const NOTIFICATION_KEY = 'mobile-flash-cards:notifications';
 
 export function clearLocalNotifications() {
   return AsyncStorage.removeItem(NOTIFICATION_KEY)
@@ -21,8 +21,8 @@ export function setLocalNotifications() {
 
               let tomorrow = new Date();
               tomorrow.setDate(tomorrow.getDate() + 1);
-              tomorrow.setHours(16);
-              tomorrow.setMinutes(26);
+              tomorrow.setHours(23);
+              tomorrow.setMinutes(55);
 
               Notifications.scheduleLocalNotificationAsync(
                 createNotification(), {
@@ -41,7 +41,7 @@ export function setLocalNotifications() {
 function createNotification() {
   return {
     title: 'Start the quiz',
-    body: "Don't forget to log your stats for today",
+    body: "Your flash cards want to see you today",
     ios: {
       sound: true,
     },

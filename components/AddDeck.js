@@ -32,6 +32,7 @@ class AddDeck extends Component {
   }
 
   render() {
+    console.log("rendered")
     return (
       <View style={styles.container}>
         <Text style={styles.title}>
