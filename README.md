@@ -38,7 +38,7 @@ The data relies on a Deck Name which has to be unique. Each DeckName has an arra
 ```
 
 # Platform
-| Platform   | Tested        |
-| -----------| ------------- |
-| IOS        | Content Cell  |
+| Platform   |            Tested              |
+| -----------| ------------------------------ |
+| IOS        | :heavy_check_mark:             |
 | Android    | :negative_squared_cross_mark:  |
