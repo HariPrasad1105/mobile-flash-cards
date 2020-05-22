@@ -11,6 +11,7 @@ To run this project locally, clone this repository and run the following command
 This is a **React Native** app and as such the project was started using create-react-native-app. The code base is rather straight forward and a standard React component model is used. **Redux** is used for state management and React Native's **AsyncStorage** is used for persistence.
 
 # Data
+The data relies on a Deck Name which has to be unique. Each DeckName has an array of questions as follows:
 ```
 {
   React: {
