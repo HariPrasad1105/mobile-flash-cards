@@ -46,14 +46,16 @@ class AddCard extends Component {
             <Text style={styles.error}>Please enter Question and/or Answer</Text>
           )
         }
-        <TextInput style={styles.input}
+        <Text style={styles.heading}>What's the Question ?</Text>
+        <TextInput style={[styles.input, { marginBottom: 35 }]}
           value={this.state.question}
-          placeholder="Question"
+          placeholder="Eg: What is Texas capital"
           onChangeText={(question) => this.setState({ question })}
         />
+        <Text style={styles.heading}>What's the Answer ?</Text>
         <TextInput style={styles.input}
           value={this.state.answer}
-          placeholder="Answer"
+          placeholder="Eg: Austin"
           onChangeText={(answer) => this.setState({ answer })}
         />
         <TouchableOpacity style={styles.addCard} onPress={this.handleSubmit} >
@@ -106,6 +108,9 @@ const styles = StyleSheet.create({
   error: {
     fontSize: 15,
     color: 'red',
+  },
+  heading: {
+    fontSize: 20,
   }
 })
 

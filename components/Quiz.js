@@ -18,10 +18,15 @@ class Quiz extends Component {
     const { deckName } = this.props.route.params;
 
     retrieveDeck(deckName)
-      .then((cards) => this.setState({
-        cards,
-        total: cards.questions.length
-      }))
+      .then((cards) => {
+
+        if (cards.questions !== undefined) {
+          this.setState({
+            cards,
+            total: cards.questions.length
+          })
+        }
+      })
   }
 
   handleAnswerClick = (userOption) => {
@@ -29,7 +34,7 @@ class Quiz extends Component {
 
     this.setState((prevState) => ({
       answered: prevState.answered + 1,
-      answeredCorrectly: userOption === cards.questions[answered].answer
+      answeredCorrectly: userOption === 'correct'
         ? prevState.answeredCorrectly + 1
         : prevState.answeredCorrectly
     }))
@@ -97,8 +102,8 @@ class Quiz extends Component {
             </View>)
           : (
             <View style={{ alignItems: 'center' }}>
-              <Text style={styles.question}> {cards.questions[answered].question}</Text>
-              <Text style={{ fontSize: 16 }}>Answer {total - answered} more questions to complete the quiz</Text>
+              <Text style={styles.question}> {cards.questions[answered].question} ?</Text>
+              <Text style={{ fontSize: 16 }}>{total - answered} question(s) remaining</Text>
               <View style={{ marginTop: 85 }}>
 
                 <TouchableOpacity style={[styles.button, { backgroundColor: 'purple' }]}

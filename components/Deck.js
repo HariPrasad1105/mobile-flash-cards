@@ -31,7 +31,7 @@ class Deck extends Component {
           {numberOfCards} cards
         </Text>
         <View style={styles.buttons}>
-          <View>
+          {numberOfCards > 0 && (<View>
             <TouchableOpacity style={styles.startQuiz}
               onPress={() => this.handleQuizStart()}
             >
@@ -39,7 +39,7 @@ class Deck extends Component {
                 Start Quiz
               </Text>
             </TouchableOpacity>
-          </View>
+          </View>)}
           <View>
             <TouchableOpacity style={styles.addCard}
               onPress={this.handleAddCard}

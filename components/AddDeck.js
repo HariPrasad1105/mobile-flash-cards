@@ -8,38 +8,49 @@ import { handleAddDeck } from '../actions/deck';
 class AddDeck extends Component {
 
   state = {
-    title: ''
+    title: '',
+    error: false,
   }
 
   handleSubmit = () => {
 
     const { title } = this.state;
 
-    // save deck to AsyncStorage
-    saveDeck(title);
+    if (title === '') {
+      this.setState({ error: true })
+    } else {
+      // save deck to AsyncStorage
+      saveDeck(title);
 
-    // add deck to redux store
-    this.props.dispatch(handleAddDeck(title));
+      this.setState({ error: false })
 
-    this.setState({ title: '' });
+      // add deck to redux store
+      this.props.dispatch(handleAddDeck(title));
 
-    //navigate to home screen
-    this.props.navigation.dispatch(
-      CommonActions.navigate({
-        name: 'Decks',
-      })
-    )
+      this.setState({ title: '' });
+
+      //navigate to home screen
+      this.props.navigation.dispatch(
+        CommonActions.navigate({
+          name: 'Decks',
+        })
+      )
+    }
   }
 
   render() {
-    console.log("rendered")
     return (
       <View style={styles.container}>
+
+        {this.state.error && (
+          <Text style={styles.error}>Please enter the deck title</Text>
+        )}
+
         <Text style={styles.title}>
           What is the title of the deck?
         </Text>
         <TextInput style={styles.input}
-          onChangeText={(title) => this.setState({ title })}
+          onChangeText={(title) => this.setState({ title: title.trim(), error: false })}
           value={this.state.title}
         />
         <TouchableOpacity style={[styles.button]} onPress={this.handleSubmit}>
@@ -75,6 +86,12 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 7,
     marginTop: 10
+  },
+  error: {
+    fontSize: 16,
+    color: 'red',
+    textAlign: 'center',
+    marginBottom: 20
   }
 })
 
